@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.168
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayXpertLibrary", "PayXpertLibrary\PayXpertLibrary.csproj", "{E01BD18D-51E7-4CBE-A3BA-BF43FCF0092E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SDKTest", "SDKTest\SDKTest.csproj", "{069D28CF-6088-443F-8D56-B68FBE8D5C33}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E01BD18D-51E7-4CBE-A3BA-BF43FCF0092E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E01BD18D-51E7-4CBE-A3BA-BF43FCF0092E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E01BD18D-51E7-4CBE-A3BA-BF43FCF0092E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E01BD18D-51E7-4CBE-A3BA-BF43FCF0092E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{069D28CF-6088-443F-8D56-B68FBE8D5C33}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{069D28CF-6088-443F-8D56-B68FBE8D5C33}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{069D28CF-6088-443F-8D56-B68FBE8D5C33}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{069D28CF-6088-443F-8D56-B68FBE8D5C33}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9F2E0527-B829-420A-BCE3-57BDC8B73311}
+	EndGlobalSection
+EndGlobal
