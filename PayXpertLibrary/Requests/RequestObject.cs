@@ -44,10 +44,46 @@ namespace PayXpertLibrary.Requests
         public String comment { get; set; }
         public String orderDescription { get; set; }
 
+        // Order shipping information
+
+        public String shipToName { get; set; }
+        public String shipToAddress { get; set; }
+        public String shipToZipcode { get; set; }
+        public String shipToCity { get; set; }
+        public String shipToState { get; set; }
+        public String shipToCountryCode { get; set; }
+        public String shipToPhone { get; set; }
+
         // Additional information
 
         public int affiliateID { get; set; }
         public String campaignName { get; set; }
+
+        // Optional AVS fields
+
+        public String AVSPolicy { get; set; }
+        public String FSPolicy { get; set; }
+
+        // Optional 3D secure fields
+
+        public String PaRes { get; set; }
+        public String ECI { get; set; }
+        public String XID { get; set; }
+        public String CAVV { get; set; }
+        public String CAVVAlgorithm { get; set; }
+
+        // Optional automated subscription fields
+
+        public int offerID { get; set; }
+        public String subscriptionType { get; set; }
+        public int rebillAmount { get; set; }
+        public String rebillPeriod { get; set; }
+        public int rebillMaxIteration { get; set; }
+        public String trialPeriod { get; set; }
+
+        // Optional fraud fields
+
+        public String threatmetrixSession { get; set; }
     }
 
     class RequestRefund : BaseRequestObject
