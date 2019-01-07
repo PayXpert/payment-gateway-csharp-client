@@ -16,7 +16,7 @@ namespace PayXpertLibrary
         protected String password;
         protected String baseURL;
 
-        protected BaseRequestObject requestObject;
+        protected BaseRequestObject requestObject = null;
 
         protected TransactionBase(String Type, String OriginatorId, String Password, String BaseURL, String transactionId)
         {
@@ -29,12 +29,6 @@ namespace PayXpertLibrary
 
         protected ResponseObject SendRequestToServer()
         {
-            String json = JsonConvert.SerializeObject(requestObject, Newtonsoft.Json.Formatting.None,
-                            new JsonSerializerSettings
-                            {
-                                NullValueHandling = NullValueHandling.Ignore
-                            });
-
             var fullURL = Utils.Combine(baseURL, this.url.Url);
             var httpWebRequest = (HttpWebRequest)WebRequest.Create(fullURL);
 
@@ -46,10 +40,19 @@ namespace PayXpertLibrary
             String encodedAuthHeader = System.Convert.ToBase64String(System.Text.Encoding.GetEncoding("ISO-8859-1").GetBytes(originatorId + ":" + password));
             httpWebRequest.Headers.Add("Authorization", "Basic " + encodedAuthHeader);
 
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStreamAsync().Result))
+            if (requestObject != null)
             {
-                streamWriter.Write(json);
-                streamWriter.Flush();
+                String json = JsonConvert.SerializeObject(requestObject, Newtonsoft.Json.Formatting.None,
+                           new JsonSerializerSettings
+                           {
+                               NullValueHandling = NullValueHandling.Ignore
+                           });
+
+                using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStreamAsync().Result))
+                {
+                    streamWriter.Write(json);
+                    streamWriter.Flush();
+                }
             }
 
             var httpResponse = (HttpWebResponse)httpWebRequest.GetResponseAsync().Result;
