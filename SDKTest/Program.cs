@@ -21,6 +21,14 @@ namespace SDKTest
             if (response.IsSuccessfull())
             {
                 Console.WriteLine("Sale operation ok. Transaction ID: " + response.transactionID);
+                Console.WriteLine("Querying transaction from server...");
+
+                // Will query transaction from server
+                var queryTransactionSale = client.NewQueryTransactionStatus(response.transactionID);
+                var transactionInfo = queryTransactionSale.Send();
+                Console.WriteLine("Transaction timestamp retrieved from server: " + transactionInfo.transaction.date);
+                Console.WriteLine("========================================\n");
+
                 Console.WriteLine("Press any key to try to perform refund");
                 Console.ReadKey();
 

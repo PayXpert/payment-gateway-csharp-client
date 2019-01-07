@@ -9,5 +9,7 @@ namespace PayXpertLibrary
         public static String SALE = "CCSale";
         public static String REFUND = "Refund";
         public static String REBILL = "Rebill";
+
+        public static String QUERY_TRANSACTION_STATUS = "QueryTransactionStatus";
     }
 }

@@ -29,6 +29,11 @@ namespace PayXpertLibrary
 
         protected ResponseObject SendRequestToServer()
         {
+            return SendRequestToServer<ResponseObject>();
+        }
+
+        protected T SendRequestToServer<T>()
+        {
             var fullURL = Utils.Combine(baseURL, this.url.Url);
             var httpWebRequest = (HttpWebRequest)WebRequest.Create(fullURL);
 
@@ -68,7 +73,7 @@ namespace PayXpertLibrary
                     Console.WriteLine(responseString);
                 }
 
-                ResponseObject responseObject = JsonConvert.DeserializeObject<ResponseObject>(responseString);
+                T responseObject = JsonConvert.DeserializeObject<T>(responseString);
                 return responseObject;
             }
         }

@@ -40,5 +40,12 @@ namespace PayXpertLibrary
         {
             return new RebillTransaction(TransactionTypes.REBILL, originatorId, password, url, transactionId);
         }
+
+        public QueryTransactionStatus NewQueryTransactionStatus(String transactionId)
+        {
+            return new QueryTransactionStatus(TransactionTypes.QUERY_TRANSACTION_STATUS, originatorId, password, url, transactionId);
+        }
+
+
     }
 }

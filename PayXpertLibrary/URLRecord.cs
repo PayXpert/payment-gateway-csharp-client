@@ -106,7 +106,11 @@ namespace PayXpertLibrary
                 Url = "subscription/offer/:offerID";
                 Method = "GET";
             }
-
+            else if (action == TransactionTypes.QUERY_TRANSACTION_STATUS)
+            {
+                Url = "transaction/" + transactionId;
+                Method = "GET";
+            }
 
         }
 

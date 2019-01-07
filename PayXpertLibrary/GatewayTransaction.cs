@@ -130,4 +130,18 @@ namespace PayXpertLibrary
         }
 
     }
+
+    public class QueryTransactionStatus : TransactionBase
+    {
+        public QueryTransactionStatus(String Type, String OriginatorId, String Password, String BaseURL, String TransactionId) : base(Type, OriginatorId, Password, BaseURL, TransactionId)
+        {
+
+        }
+
+        public QueryTransactionResponseObject Send()
+        {
+            return SendRequestToServer<QueryTransactionResponseObject>();
+        }
+
+    }
 }

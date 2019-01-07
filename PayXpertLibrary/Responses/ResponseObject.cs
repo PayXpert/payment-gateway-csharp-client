@@ -21,4 +21,9 @@ namespace PayXpertLibrary.Responses
             return errorCode == "000";
         }
     }
+
+    public class QueryTransactionResponseObject : ResponseObject
+    {
+        public Transaction transaction { get; set; }
+    }
 }
