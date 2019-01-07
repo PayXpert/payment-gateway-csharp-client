@@ -78,7 +78,7 @@ namespace PayXpertLibrary
             }
             else if (action == TransactionTypes.INSTANT_CONVERSION)
             {
-                Url = "subscription/:subscriptionID/instantconversion";
+                Url = "subscription/" + transactionId + "/instantconversion";
                 Method = "POST";
             }
             else if (action == TransactionTypes.STATUS_SUBSCRIPTION)

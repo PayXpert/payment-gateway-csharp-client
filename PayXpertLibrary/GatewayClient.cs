@@ -88,5 +88,16 @@ namespace PayXpertLibrary
         }
 
         #endregion
+
+        #region Subscription management
+
+        public SubscriptionInstantConversionTransaction NewSubscriptionInstantConversionTransaction(String subscriptionId)
+        {
+            return new SubscriptionInstantConversionTransaction(TransactionTypes.INSTANT_CONVERSION, originatorId, password, url, subscriptionId);
+        }
+
+        #endregion
+
+
     }
 }

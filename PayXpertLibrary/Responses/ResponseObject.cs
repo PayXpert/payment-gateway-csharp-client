@@ -20,6 +20,22 @@ namespace PayXpertLibrary.Responses
         public string transactionID { get; set; }
     }
 
+    public class SaleResponseObject : ResponseObject
+    {
+        public string statementDescriptor { get; set; }
+        public PaymentMeanInfo paymentMeanInfo { get; set; }
+
+        // Optional AVS fields
+
+        public string AVSResult { get; set; }
+        public string FSResult { get; set; }
+        public string FSStatus { get; set; }
+
+        // Optional automated subscription fields
+
+        public string subscriptionID { get; set; }
+    }
+
     public class QueryTransactionResponseObject : ResponseObject
     {
         public Transaction transaction { get; set; }

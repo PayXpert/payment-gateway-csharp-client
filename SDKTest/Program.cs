@@ -3,9 +3,9 @@ using System;
 
 namespace SDKTest
 {
-    class Program
+    partial class Program
     {
-        private static String customerIP = "8.8.8.8";
+        private static String customerIP = "8.8.9.9";
 
         private static void TestSaleAndRefund()
         {
@@ -250,6 +250,7 @@ namespace SDKTest
                 Console.WriteLine("\n\n=================================\n\n");
                 Console.WriteLine("PayXpert C# SDK demo");
                 Console.WriteLine("Please choose test to perform:\n");
+
                 Console.WriteLine("1: Sale, refund and rebill");
                 Console.WriteLine("2: Export transactions: last month");
                 Console.WriteLine("3: Authorize + capture");
@@ -257,6 +258,8 @@ namespace SDKTest
                 Console.WriteLine("5: Sale + credit funds transfer");
                 Console.WriteLine("6: Sale + blacklist card number");
                 Console.WriteLine("7: Blacklist customer IP " + customerIP);
+                Console.WriteLine("8: Subscription: instant conversion");
+
                 Console.WriteLine("\nType 0 to exit");
 
                 ConsoleKeyInfo key = Console.ReadKey();
@@ -288,6 +291,10 @@ namespace SDKTest
                 else if (key.KeyChar == '7')
                 {
                     BlacklistValueTest();
+                }
+                else if (key.KeyChar == '8')
+                {
+                    TestSubscriptionInstantConversion();
                 }
                 else if (key.KeyChar == '0')
                 {

@@ -16,9 +16,9 @@ namespace PayXpertLibrary
             this.requestObject = new RequestSale();
         }
 
-        public ResponseObject Send()
+        public SaleResponseObject Send()
         {
-            return SendRequestToServer();
+            return SendRequestToServer<SaleResponseObject>();
         }
 
         public void SetTransactionInformation(int amount, String currency, String orderId, String customerIP = null)
@@ -83,6 +83,30 @@ namespace PayXpertLibrary
 
             obj.affiliateID = affiliateID;
             obj.campaignName = campaignName;
+        }
+
+        public void SetSubscriptionInformation(SubscriptionType subscriptionType, int? rebillAmount, String rebillPeriod, int? rebillMaxIteration = null, String trialPeriod = null)
+        {
+            var obj = this.requestObject as RequestSale;
+
+            if (subscriptionType == SubscriptionType.NORMAL)
+            {
+                obj.subscriptionType = "normal";
+            } else if (subscriptionType == SubscriptionType.INFINITE)
+            {
+                obj.subscriptionType = "infinite";
+            } else if (subscriptionType == SubscriptionType.ONETIME)
+            {
+                obj.subscriptionType = "onetime";
+            } else if (subscriptionType == SubscriptionType.LIFETIME)
+            {
+                obj.subscriptionType = "lifetime";
+            }
+
+            obj.rebillAmount = rebillAmount;
+            obj.rebillPeriod = rebillPeriod;
+            obj.rebillMaxIteration = rebillMaxIteration;
+            obj.trialPeriod = trialPeriod;
         }
 
     }

@@ -16,5 +16,15 @@ namespace PayXpertLibrary
         EXPORT_TRANSACTION_LIST,
         INSTANT_CONVERSION
     }
-    
+
+    public enum BlacklistValueType
+    {
+        CREDIT_CARD_NUMBER, TODITO_CARD_NUMBER, ACCOUNT_NUMBER, SHOPPER_EMAIL, CUSTOMER_IP
+    }
+
+    public enum SubscriptionType
+    {
+        NORMAL, INFINITE, ONETIME, LIFETIME
+    }
+
 }

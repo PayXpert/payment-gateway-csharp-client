@@ -34,11 +34,6 @@ namespace PayXpertLibrary
         }
     }
 
-    public enum BlacklistValueType
-    {
-        CREDIT_CARD_NUMBER, TODITO_CARD_NUMBER, ACCOUNT_NUMBER, SHOPPER_EMAIL, CUSTOMER_IP
-    }
-
     public class BlacklistValueTransaction : TransactionBase
     {
         public BlacklistValueTransaction(TransactionTypes Type, String OriginatorId, String Password, String BaseURL) : base(Type, OriginatorId, Password, BaseURL, null)
