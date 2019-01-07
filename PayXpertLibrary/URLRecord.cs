@@ -53,7 +53,7 @@ namespace PayXpertLibrary
             }
             else if (action == TransactionTypes.CANCEL)
             {
-                Url = "transaction/:transactionID/cancel";
+                Url = "transaction/" + transactionId + "/cancel";
                 Method = "POST";
             }
             else if (action == TransactionTypes.REBILL)

@@ -123,7 +123,7 @@ namespace SDKTest
             var client = new GatewayClient(OriginatorConfig.ORIGINATOR_ID, OriginatorConfig.ORIGINATOR_PASSWORD);
             var transaction = client.NewAuthorizeTransaction();
 
-            var amount = 1250;
+            var amount = 1420;
 
             transaction.SetTransactionInformation(amount, "EUR", "50", "8.8.8.8");
             transaction.SetCardInformation("4111111111111111", "000", "CSHARP SDK", "10", "2024");
@@ -134,20 +134,20 @@ namespace SDKTest
             if (response.IsSuccessfull())
             {
                 Console.WriteLine("Authorize operation ok. Transaction ID: " + response.transactionID);
-                Console.WriteLine("Performing capture...");
+                Console.WriteLine("Performing cancel...");
 
-                var captureTransaction = client.NewCaptureTransaction(response.transactionID);
-                captureTransaction.SetAmount(amount);
+                var cancelTransaction = client.NewCancelTransaction(response.transactionID);
+                cancelTransaction.SetAmount(amount);
 
-                var captureResponse = captureTransaction.Send();
+                var cancelResponse = cancelTransaction.Send();
 
-                if (captureResponse.IsSuccessfull())
+                if (cancelResponse.IsSuccessfull())
                 {
-                    Console.WriteLine("Capture is ok. New transaction ID: " + captureResponse.transactionID);
+                    Console.WriteLine("Cancel is ok. New transaction ID: " + cancelResponse.transactionID);
                 }
                 else
                 {
-                    Console.WriteLine("Error performing capture: " + captureResponse.errorMessage);
+                    Console.WriteLine("Error performing cancel: " + cancelResponse.errorMessage);
                 }
             }
         }
