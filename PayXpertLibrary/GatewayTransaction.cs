@@ -147,8 +147,12 @@ namespace PayXpertLibrary
 
     public class ExportTransactionList : TransactionBase
     {
-        readonly String StartDate;
-        readonly String EndDate;
+        private readonly String StartDate;
+        private readonly String EndDate;
+
+        private String transactionType = null;
+        private String transactionErrorCode = null;
+
 
         public ExportTransactionList(TransactionTypes Type, String OriginatorId, String Password, String BaseURL, String StartDate, String EndDate, String transactionOperation) : base(Type, OriginatorId, Password, BaseURL, transactionOperation)
         {
@@ -156,9 +160,30 @@ namespace PayXpertLibrary
             this.EndDate = EndDate;
         }
 
+        public void SetTransactionType(String TransactionType)
+        {
+            this.transactionType = TransactionType;
+        }
+
+        public void SetTransactionErrorCode(String TransactionErrorCode)
+        {
+            this.transactionErrorCode = TransactionErrorCode;
+        }
+
         public ExportTransactionsReponseObject Send()
         {
             this.getParams = "startDate=" + StartDate + "&endDate=" + EndDate;
+
+            if (this.transactionType != null)
+            {
+                this.getParams = this.getParams + "&transactionType" + transactionType;
+            }
+
+            if (this.transactionErrorCode != null)
+            {
+                this.getParams = this.getParams + "&transactionErrorCode" + transactionErrorCode;
+            }
+        
             return SendRequestToServer<ExportTransactionsReponseObject>();
         }
 
