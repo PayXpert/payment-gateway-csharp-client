@@ -21,7 +21,7 @@ namespace SDKTest
 
             // Set the subscription information
 
-            transaction.SetSubscriptionInformation(SubscriptionType.NORMAL, 1000, "P1D", 5);
+            transaction.SetSubscriptionInformation(SubscriptionType.NORMAL, 1000, "P5D", 5, "P1D");
 
             var response = transaction.Send();
 
