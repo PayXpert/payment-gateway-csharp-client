@@ -63,7 +63,7 @@ namespace PayXpertLibrary
             }
             else if (action == TransactionTypes.BLACKLIST_TRANSACTION)
             {
-                Url = "transaction/:transactionID/blacklist";
+                Url = "transaction/" + transactionId + "/blacklist";
                 Method = "POST";
             }
             else if (action == TransactionTypes.BLACKLIST_VALUE)

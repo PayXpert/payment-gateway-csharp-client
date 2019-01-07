@@ -4,7 +4,7 @@ using System.Text;
 
 namespace PayXpertLibrary.Responses
 {
-    public abstract class BaseResponseObject
+    public class BaseResponseObject
     {
         public string errorCode { get; set; }
         public string errorMessage { get; set; }

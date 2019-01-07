@@ -102,7 +102,6 @@ namespace PayXpertLibrary.Requests
 
         public int amount { get; set; }
         public string transactionID { get; set; }
-
     }
 
 }

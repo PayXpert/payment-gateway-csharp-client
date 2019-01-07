@@ -26,6 +26,8 @@ namespace PayXpertLibrary
             this.password = Password;
         }
 
+        #region Basic transactions
+
         public SaleTransaction NewSaleTransaction(String transactionId = null)
         {
             return new SaleTransaction(TransactionTypes.SALE, originatorId, password, url, transactionId);
@@ -71,5 +73,15 @@ namespace PayXpertLibrary
             return new ExportTransactionList(TransactionTypes.EXPORT_TRANSACTION_LIST, originatorId, password, url, StartDate, EndDate, TransactionOperation);
         }
 
+        #endregion
+
+        #region Blacklist transactions
+
+        public BlacklistUserTransaction NewBlacklistUserTransaction(String transactionId)
+        {
+            return new BlacklistUserTransaction(TransactionTypes.BLACKLIST_TRANSACTION, originatorId, password, url, transactionId);
+        }
+
+        #endregion
     }
 }
