@@ -101,6 +101,11 @@ namespace PayXpertLibrary
             return new SubscriptionCancelTransaction(TransactionTypes.CANCEL_SUBSCRIPTION, originatorId, password, url, subscriptionId);
         }
 
+        public QuerySubscriptionTransaction NewQuerySubscriptionTransaction(String subscriptionId)
+        {
+            return new QuerySubscriptionTransaction(TransactionTypes.STATUS_SUBSCRIPTION, originatorId, password, url, subscriptionId);
+        }
+
         #endregion
 
 

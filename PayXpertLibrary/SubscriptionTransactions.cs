@@ -40,5 +40,19 @@ namespace PayXpertLibrary
         }
     }
 
+    public class QuerySubscriptionTransaction : TransactionBase
+    {
+        public QuerySubscriptionTransaction(TransactionTypes Type, String OriginatorId, String Password, String BaseURL, String TransactionId) : base(Type, OriginatorId, Password, BaseURL, TransactionId)
+        {
+
+        }
+
+        public ResponseSubscriptionQuery Send()
+        {
+            return SendRequestToServer<ResponseSubscriptionQuery>();
+        }
+
+    }
+
 
 }

@@ -83,7 +83,7 @@ namespace PayXpertLibrary
             }
             else if (action == TransactionTypes.STATUS_SUBSCRIPTION)
             {
-                Url = "subscription/:subscriptionID";
+                Url = "subscription/" + transactionId;
                 Method = "GET";
             }
             else if (action == TransactionTypes.EXPORT_TRANSACTION_LIST)
