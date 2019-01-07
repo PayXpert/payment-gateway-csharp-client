@@ -258,7 +258,7 @@ namespace SDKTest
                 Console.WriteLine("5: Sale + credit funds transfer");
                 Console.WriteLine("6: Sale + blacklist card number");
                 Console.WriteLine("7: Blacklist customer IP " + customerIP);
-                Console.WriteLine("8: Subscription: instant conversion");
+                Console.WriteLine("8: Subscription: create, instant conversion, cancel");
 
                 Console.WriteLine("\nType 0 to exit");
 

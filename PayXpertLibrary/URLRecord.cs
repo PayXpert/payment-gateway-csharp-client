@@ -73,7 +73,7 @@ namespace PayXpertLibrary
             }
             else if (action == TransactionTypes.CANCEL_SUBSCRIPTION)
             {
-                Url = "subscription/:subscriptionID/cancel";
+                Url = "subscription/" + transactionId + "/cancel";
                 Method = "POST";
             }
             else if (action == TransactionTypes.INSTANT_CONVERSION)

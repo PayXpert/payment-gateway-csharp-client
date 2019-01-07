@@ -28,19 +28,34 @@ namespace SDKTest
             if (response.IsSuccessfull())
             {
                 Console.WriteLine("Sale operation ok. Transaction ID: " + response.transactionID + ", subscription ID: " + response.subscriptionID);
-                Console.WriteLine("Performing blacklisting of card number ...");
+                Console.WriteLine("Performing instant subscription conversion ...");
 
-                var blacklistTransaction = client.NewSubscriptionInstantConversionTransaction(response.subscriptionID);
+                var instantConversionTransaction = client.NewSubscriptionInstantConversionTransaction(response.subscriptionID);
+                var instantConversionResponse = instantConversionTransaction.Send();
 
-                var blacklistResponse = blacklistTransaction.Send();
-
-                if (blacklistResponse.IsSuccessfull())
+                if (instantConversionResponse.IsSuccessfull())
                 {
-                    Console.WriteLine("Blacklist is ok: " + blacklistResponse.errorMessage);
+                    Console.WriteLine("Conversion is ok: " + instantConversionResponse.errorMessage);
+                    Console.WriteLine("Canceling subscription ...");
+
+                    var cancelTransaction = client.NewSubscriptionCancelTransaction(response.subscriptionID);
+                    cancelTransaction.SetCancelReason(1022); // Mandatory!!!
+
+                    var cancelResponse = cancelTransaction.Send();
+
+                    if (cancelResponse.IsSuccessfull())
+                    {
+                        Console.WriteLine("Cancel is ok: " + cancelResponse.errorMessage);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Error while cancelling subscription: " + cancelResponse.errorMessage);
+                    }
+
                 }
                 else
                 {
-                    Console.WriteLine("Error blacklisting: " + blacklistResponse.errorMessage);
+                    Console.WriteLine("Error while converting subscription: " + instantConversionResponse.errorMessage);
                 }
             }
         }
