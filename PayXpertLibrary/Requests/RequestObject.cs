@@ -56,7 +56,7 @@ namespace PayXpertLibrary.Requests
 
         // Additional information
 
-        public int affiliateID { get; set; }
+        public int? affiliateID { get; set; }
         public String campaignName { get; set; }
 
         // Optional AVS fields
@@ -74,11 +74,11 @@ namespace PayXpertLibrary.Requests
 
         // Optional automated subscription fields
 
-        public int offerID { get; set; }
+        public int? offerID { get; set; }
         public String subscriptionType { get; set; }
-        public int rebillAmount { get; set; }
+        public int? rebillAmount { get; set; }
         public String rebillPeriod { get; set; }
-        public int rebillMaxIteration { get; set; }
+        public int? rebillMaxIteration { get; set; }
         public String trialPeriod { get; set; }
 
         // Optional fraud fields
@@ -96,7 +96,7 @@ namespace PayXpertLibrary.Requests
 
     }
 
-    class RequestRebill : BaseRequestObject
+    class RequestCaptureRebill : BaseRequestObject
     {
         // Transaction information
 

@@ -31,6 +31,16 @@ namespace PayXpertLibrary
             return new SaleTransaction(TransactionTypes.SALE, originatorId, password, url, transactionId);
         }
 
+        public SaleTransaction NewAuthorizeTransaction(String transactionId = null)
+        {
+            return new SaleTransaction(TransactionTypes.AUTHORIZE, originatorId, password, url, transactionId);
+        }
+
+        public CaptureTransaction NewCaptureTransaction(String transactionId)
+        {
+            return new CaptureTransaction(TransactionTypes.REBILL, originatorId, password, url, transactionId);
+        }
+
         public RefundTransaction NewRefundTransaction(String transactionId)
         {
             return new RefundTransaction(TransactionTypes.REFUND, originatorId, password, url, transactionId);
