@@ -87,9 +87,9 @@ namespace PayXpertLibrary
 
     }
 
-    public class CaptureTransaction : TransactionBase
+    public class CaptureRebillCancelTransaction : TransactionBase
     {
-        public CaptureTransaction(TransactionTypes Type, String OriginatorId, String Password, String BaseURL, String TransactionId) : base(Type, OriginatorId, Password, BaseURL, TransactionId)
+        public CaptureRebillCancelTransaction(TransactionTypes Type, String OriginatorId, String Password, String BaseURL, String TransactionId) : base(Type, OriginatorId, Password, BaseURL, TransactionId)
         {
             var request = new RequestCaptureRebill();
             request.transactionID = TransactionId;
@@ -102,26 +102,6 @@ namespace PayXpertLibrary
         }
 
         public void SetAmount(int amount)
-        {
-            (requestObject as RequestCaptureRebill).amount = amount;
-        }
-    }
-
-    public class RebillTransaction : TransactionBase
-    {
-        public RebillTransaction(TransactionTypes Type, String OriginatorId, String Password, String BaseURL, String TransactionId) : base(Type, OriginatorId, Password, BaseURL, TransactionId)
-        {
-            var request = new RequestCaptureRebill();
-            request.transactionID = TransactionId; 
-            this.requestObject = request;
-        }
-
-        public ResponseObject Send()
-        {
-            return SendRequestToServer();
-        }
-
-        public void SetAmountForRebill(int amount)
         {
             (requestObject as RequestCaptureRebill).amount = amount;
         }

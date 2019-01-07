@@ -49,7 +49,7 @@ namespace SDKTest
                 Console.ReadKey();
 
                 var rebillTransaction = client.NewRebillTransaction(response.transactionID);
-                rebillTransaction.SetAmountForRebill(amount * 2);
+                rebillTransaction.SetAmount(amount * 2);
 
                 var rebillResponse = rebillTransaction.Send();
 
@@ -87,9 +87,43 @@ namespace SDKTest
         private static void TestAuthAndCapture()
         {
             var client = new GatewayClient(OriginatorConfig.ORIGINATOR_ID, OriginatorConfig.ORIGINATOR_PASSWORD);
-            var transaction = client.NewSaleTransaction();
+            var transaction = client.NewAuthorizeTransaction();
 
-            var amount = 1000;
+            var amount = 1250;
+
+            transaction.SetTransactionInformation(amount, "EUR", "50", "8.8.8.8");
+            transaction.SetCardInformation("4111111111111111", "000", "CSHARP SDK", "10", "2024");
+            transaction.SetShopperInformation("CSHARP SDK", "MICROSOFT HELL", "666", "REDMOND", "WA", "US", "12445", "x@x.rr");
+
+            var response = transaction.Send();
+
+            if (response.IsSuccessfull())
+            {
+                Console.WriteLine("Authorize operation ok. Transaction ID: " + response.transactionID);
+                Console.WriteLine("Performing capture...");
+
+                var captureTransaction = client.NewCaptureTransaction(response.transactionID);
+                captureTransaction.SetAmount(amount);
+
+                var captureResponse = captureTransaction.Send();
+
+                if (captureResponse.IsSuccessfull())
+                {
+                    Console.WriteLine("Capture is ok. New transaction ID: " + captureResponse.transactionID);
+                }
+                else
+                {
+                    Console.WriteLine("Error performing capture: " + captureResponse.errorMessage);
+                }
+            }
+        }
+
+        private static void TestAuthAndCancel()
+        {
+            var client = new GatewayClient(OriginatorConfig.ORIGINATOR_ID, OriginatorConfig.ORIGINATOR_PASSWORD);
+            var transaction = client.NewAuthorizeTransaction();
+
+            var amount = 1250;
 
             transaction.SetTransactionInformation(amount, "EUR", "50", "8.8.8.8");
             transaction.SetCardInformation("4111111111111111", "000", "CSHARP SDK", "10", "2024");
@@ -128,6 +162,7 @@ namespace SDKTest
                 Console.WriteLine("1: Sale, refund and rebill");
                 Console.WriteLine("2: Export transactions: last month");
                 Console.WriteLine("3: Authorize + capture");
+                Console.WriteLine("4: Authorize + cancel");
                 Console.WriteLine("\nType 0 to exit");
 
                 ConsoleKeyInfo key = Console.ReadKey();
@@ -143,6 +178,10 @@ namespace SDKTest
                 else if (key.KeyChar == '3')
                 {
                     TestAuthAndCapture();
+                }
+                else if (key.KeyChar == '4')
+                {
+                    TestAuthAndCancel();
                 }
                 else if (key.KeyChar == '0')
                 {

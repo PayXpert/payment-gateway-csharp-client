@@ -36,9 +36,9 @@ namespace PayXpertLibrary
             return new SaleTransaction(TransactionTypes.AUTHORIZE, originatorId, password, url, transactionId);
         }
 
-        public CaptureTransaction NewCaptureTransaction(String transactionId)
+        public CaptureRebillCancelTransaction NewCaptureTransaction(String transactionId)
         {
-            return new CaptureTransaction(TransactionTypes.REBILL, originatorId, password, url, transactionId);
+            return new CaptureRebillCancelTransaction(TransactionTypes.CAPTURE, originatorId, password, url, transactionId);
         }
 
         public RefundTransaction NewRefundTransaction(String transactionId)
@@ -46,9 +46,9 @@ namespace PayXpertLibrary
             return new RefundTransaction(TransactionTypes.REFUND, originatorId, password, url, transactionId);
         }
 
-        public RebillTransaction NewRebillTransaction(String transactionId)
+        public CaptureRebillCancelTransaction NewRebillTransaction(String transactionId)
         {
-            return new RebillTransaction(TransactionTypes.REBILL, originatorId, password, url, transactionId);
+            return new CaptureRebillCancelTransaction(TransactionTypes.REBILL, originatorId, password, url, transactionId);
         }
 
         public QueryTransactionStatus NewQueryTransactionStatus(String transactionId)

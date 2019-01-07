@@ -48,7 +48,7 @@ namespace PayXpertLibrary
             }
             else if (action == TransactionTypes.CAPTURE)
             {
-                Url = "transaction/:transactionID/capture";
+                Url = "transaction/" + transactionId + "/capture";
                 Method = "POST";
             }
             else if (action == TransactionTypes.CANCEL)
