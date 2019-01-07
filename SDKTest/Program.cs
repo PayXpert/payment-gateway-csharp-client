@@ -68,6 +68,22 @@ namespace SDKTest
             }
         }
 
+        private static void TestExportTransactions()
+        {
+            Console.WriteLine("Retrieving list of transactions from server...");
+
+            var currentUnixTimestamp = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+            var prevUnixTimestamp = currentUnixTimestamp - (60 * 60 * 24 * 30);
+
+            var client = new GatewayClient(OriginatorConfig.ORIGINATOR_ID, OriginatorConfig.ORIGINATOR_PASSWORD);
+
+            var exportTransactions = client.NewExportTransactionList(prevUnixTimestamp.ToString(), currentUnixTimestamp.ToString(), null);
+
+            var transactions = exportTransactions.Send();
+
+            Console.WriteLine("Total number of retrieved transactions: " + transactions.transactionList.Count.ToString());
+        }
+
         private static void DisplayMenu()
         {
             while (true)
@@ -76,6 +92,7 @@ namespace SDKTest
                 Console.WriteLine("PayXpert C# SDK demo");
                 Console.WriteLine("Please choose test to perform:\n");
                 Console.WriteLine("1: Sale, refund and rebill");
+                Console.WriteLine("2: Export transactions: last month");
                 Console.WriteLine("\nType 0 to exit");
 
                 ConsoleKeyInfo key = Console.ReadKey();
@@ -84,10 +101,15 @@ namespace SDKTest
                 {
                     TestSaleAndRefund();
                 }
+                else if (key.KeyChar == '2')
+                {
+                    TestExportTransactions();
+                }
                 else if (key.KeyChar == '0')
                 {
                     return;
-                } else
+                }
+                else
                 {
                     Console.WriteLine("Unknown command");
                 }

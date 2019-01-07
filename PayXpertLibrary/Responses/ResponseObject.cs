@@ -6,24 +6,27 @@ namespace PayXpertLibrary.Responses
 {
     public abstract class BaseResponseObject
     {
-        public abstract bool IsSuccessfull();           
-    }
-
-    public class ResponseObject : BaseResponseObject
-    {
-        public string transactionID { get; set; }
-
         public string errorCode { get; set; }
         public string errorMessage { get; set; }
 
-        public override bool IsSuccessfull()
+        public bool IsSuccessfull()
         {
             return errorCode == "000";
         }
     }
 
+    public class ResponseObject : BaseResponseObject
+    {
+        public string transactionID { get; set; }
+    }
+
     public class QueryTransactionResponseObject : ResponseObject
     {
         public Transaction transaction { get; set; }
+    }
+
+    public class ExportTransactionsReponseObject : BaseResponseObject
+    {
+        public List<Transaction> transactionList { get; set; }
     }
 }

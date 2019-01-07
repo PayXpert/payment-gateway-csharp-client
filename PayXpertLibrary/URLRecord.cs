@@ -88,7 +88,13 @@ namespace PayXpertLibrary
             }
             else if (action == TransactionTypes.EXPORT_TRANSACTION_LIST)
             {
-                Url = "transactions/:transactionOperation";
+                Url = "transactions";
+
+                if (transactionId != null)
+                {
+                    Url = Url + "/" + transactionId;
+                }
+
                 Method = "GET";
             }
             else if (action == TransactionTypes.EXPORT_SUBSCRIPTION)

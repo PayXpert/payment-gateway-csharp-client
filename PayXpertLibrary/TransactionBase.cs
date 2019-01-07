@@ -12,6 +12,9 @@ namespace PayXpertLibrary
     public abstract class TransactionBase
     {
         private URLRecord url;
+
+        protected String getParams = null;
+
         protected String originatorId;
         protected String password;
         protected String baseURL;
@@ -35,6 +38,12 @@ namespace PayXpertLibrary
         protected T SendRequestToServer<T>()
         {
             var fullURL = Utils.Combine(baseURL, this.url.Url);
+
+            if (getParams != null)
+            {
+                fullURL = fullURL + "?" + getParams;
+            }
+
             var httpWebRequest = (HttpWebRequest)WebRequest.Create(fullURL);
 
             httpWebRequest.ContentType = "application/json";

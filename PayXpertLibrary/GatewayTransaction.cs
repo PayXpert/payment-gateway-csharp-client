@@ -150,15 +150,16 @@ namespace PayXpertLibrary
         readonly String StartDate;
         readonly String EndDate;
 
-        public ExportTransactionList(TransactionTypes Type, String OriginatorId, String Password, String BaseURL, String StartDate, String EndDate, String transactionOperation) : base(Type, OriginatorId, Password, BaseURL, null)
+        public ExportTransactionList(TransactionTypes Type, String OriginatorId, String Password, String BaseURL, String StartDate, String EndDate, String transactionOperation) : base(Type, OriginatorId, Password, BaseURL, transactionOperation)
         {
             this.StartDate = StartDate;
             this.EndDate = EndDate;
         }
 
-        public QueryTransactionResponseObject Send()
+        public ExportTransactionsReponseObject Send()
         {
-            return SendRequestToServer<QueryTransactionResponseObject>();
+            this.getParams = "startDate=" + StartDate + "&endDate=" + EndDate;
+            return SendRequestToServer<ExportTransactionsReponseObject>();
         }
 
     }
