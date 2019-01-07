@@ -18,7 +18,7 @@ namespace PayXpertLibrary
 
         protected BaseRequestObject requestObject = null;
 
-        protected TransactionBase(String Type, String OriginatorId, String Password, String BaseURL, String transactionId)
+        protected TransactionBase(TransactionTypes Type, String OriginatorId, String Password, String BaseURL, String transactionId)
         {
             this.url = new URLRecord(Type, transactionId);
 

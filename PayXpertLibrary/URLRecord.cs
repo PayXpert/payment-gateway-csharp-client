@@ -9,9 +9,9 @@ namespace PayXpertLibrary
         public String Url { get; set; }
         public String Method { get; set; }
 
-        public URLRecord(String action, String transactionId)
+        public URLRecord(TransactionTypes action, String transactionId)
         {
-            if (action == "CCAuthorize")
+            if (action == TransactionTypes.AUTHORIZE)
             {
                 Url = "transaction/authorize/creditcard";
                 Method = "POST";
@@ -21,17 +21,17 @@ namespace PayXpertLibrary
                 Url = "transaction/sale/creditcard";
                 Method = "POST";
             }
-            else if (action == "ToditoSale")
+            else if (action == TransactionTypes.TODITO_SALE)
             {
                 Url = "transaction/sale/todito";
                 Method = "POST";
             }
-            else if (action == "3DSCheck")
+            else if (action == TransactionTypes._3DSCHECK)
             {
                 Url = "transaction/3dscheck/creditcard";
                 Method = "POST";
             }
-            else if (action == "3DSParse")
+            else if (action == TransactionTypes._3DSPARSE)
             {
                 Url = "transaction/:transactionID/3dsparse";
                 Method = "POST";
@@ -41,17 +41,17 @@ namespace PayXpertLibrary
                 Url = "transaction/" + transactionId + "/refund";
                 Method = "POST";
             }
-            else if (action == "Credit")
+            else if (action == TransactionTypes.CREDIT)
             {
                 Url = "transaction/:transactionID/credit";
                 Method = "POST";
             }
-            else if (action == "Capture")
+            else if (action == TransactionTypes.CAPTURE)
             {
                 Url = "transaction/:transactionID/capture";
                 Method = "POST";
             }
-            else if (action == "Cancel")
+            else if (action == TransactionTypes.CANCEL)
             {
                 Url = "transaction/:transactionID/cancel";
                 Method = "POST";
@@ -61,47 +61,42 @@ namespace PayXpertLibrary
                 Url = "transaction/" + transactionId + "/rebill";
                 Method = "POST";
             }
-            else if (action == "BlacklistTransaction")
+            else if (action == TransactionTypes.BLACKLIST_TRANSACTION)
             {
                 Url = "transaction/:transactionID/blacklist";
                 Method = "POST";
             }
-            else if (action == "BlacklistValue")
+            else if (action == TransactionTypes.BLACKLIST_VALUE)
             {
                 Url = "blacklist";
                 Method = "POST";
             }
-            else if (action == "CancelSubscription")
+            else if (action == TransactionTypes.CANCEL_SUBSCRIPTION)
             {
                 Url = "subscription/:subscriptionID/cancel";
                 Method = "POST";
             }
-            else if (action == "InstantConversion")
+            else if (action == TransactionTypes.INSTANT_CONVERSION)
             {
                 Url = "subscription/:subscriptionID/instantconversion";
                 Method = "POST";
             }
-            else if (action == "StatusTransaction")
-            {
-                Url = "transaction/:transactionID";
-                Method = "GET";
-            }
-            else if (action == "StatusSubscription")
+            else if (action == TransactionTypes.STATUS_SUBSCRIPTION)
             {
                 Url = "subscription/:subscriptionID";
                 Method = "GET";
             }
-            else if (action == "ExportTransaction")
+            else if (action == TransactionTypes.EXPORT_TRANSACTION_LIST)
             {
                 Url = "transactions/:transactionOperation";
                 Method = "GET";
             }
-            else if (action == "ExportSubscription")
+            else if (action == TransactionTypes.EXPORT_SUBSCRIPTION)
             {
                 Url = "subscriptions";
                 Method = "GET";
             }
-            else if (action == "ExportSubscriptionOffer")
+            else if (action == TransactionTypes.EXPORT_SUBSCRIPTION_OFFER)
             {
                 Url = "subscription/offer/:offerID";
                 Method = "GET";

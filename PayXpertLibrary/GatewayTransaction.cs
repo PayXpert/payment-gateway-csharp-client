@@ -11,7 +11,7 @@ namespace PayXpertLibrary
 {
     public class SaleTransaction : TransactionBase
     {
-        public SaleTransaction(String Type, String OriginatorId, String Password, String BaseURL, String TransactionId) : base(Type, OriginatorId, Password, BaseURL, TransactionId)
+        public SaleTransaction(TransactionTypes Type, String OriginatorId, String Password, String BaseURL, String TransactionId) : base(Type, OriginatorId, Password, BaseURL, TransactionId)
         {
             this.requestObject = new RequestSale();
         }
@@ -89,7 +89,7 @@ namespace PayXpertLibrary
 
     public class RebillTransaction : TransactionBase
     {
-        public RebillTransaction(String Type, String OriginatorId, String Password, String BaseURL, String TransactionId) : base(Type, OriginatorId, Password, BaseURL, TransactionId)
+        public RebillTransaction(TransactionTypes Type, String OriginatorId, String Password, String BaseURL, String TransactionId) : base(Type, OriginatorId, Password, BaseURL, TransactionId)
         {
             var request = new RequestRebill();
             request.transactionID = TransactionId; 
@@ -109,7 +109,7 @@ namespace PayXpertLibrary
 
     public class RefundTransaction : TransactionBase
     {
-        public RefundTransaction(String Type, String OriginatorId, String Password, String BaseURL, String TransactionId) : base(Type, OriginatorId, Password, BaseURL, TransactionId)
+        public RefundTransaction(TransactionTypes Type, String OriginatorId, String Password, String BaseURL, String TransactionId) : base(Type, OriginatorId, Password, BaseURL, TransactionId)
         {
             var request = new RequestRefund();
             request.transactionID = TransactionId;
@@ -133,9 +133,27 @@ namespace PayXpertLibrary
 
     public class QueryTransactionStatus : TransactionBase
     {
-        public QueryTransactionStatus(String Type, String OriginatorId, String Password, String BaseURL, String TransactionId) : base(Type, OriginatorId, Password, BaseURL, TransactionId)
+        public QueryTransactionStatus(TransactionTypes Type, String OriginatorId, String Password, String BaseURL, String TransactionId) : base(Type, OriginatorId, Password, BaseURL, TransactionId)
         {
 
+        }
+
+        public QueryTransactionResponseObject Send()
+        {
+            return SendRequestToServer<QueryTransactionResponseObject>();
+        }
+
+    }
+
+    public class ExportTransactionList : TransactionBase
+    {
+        readonly String StartDate;
+        readonly String EndDate;
+
+        public ExportTransactionList(TransactionTypes Type, String OriginatorId, String Password, String BaseURL, String StartDate, String EndDate, String transactionOperation) : base(Type, OriginatorId, Password, BaseURL, null)
+        {
+            this.StartDate = StartDate;
+            this.EndDate = EndDate;
         }
 
         public QueryTransactionResponseObject Send()

@@ -4,12 +4,17 @@ using System.Text;
 
 namespace PayXpertLibrary
 {
-    public class TransactionTypes
+    public enum TransactionTypes
     {
-        public static String SALE = "CCSale";
-        public static String REFUND = "Refund";
-        public static String REBILL = "Rebill";
-
-        public static String QUERY_TRANSACTION_STATUS = "QueryTransactionStatus";
+        AUTHORIZE, CAPTURE, SALE, REFUND, REBILL, CANCEL,
+        CREDIT,
+        _3DSCHECK, _3DSPARSE,
+        TODITO_SALE,
+        BLACKLIST_TRANSACTION, BLACKLIST_VALUE,
+        CANCEL_SUBSCRIPTION, STATUS_SUBSCRIPTION, EXPORT_SUBSCRIPTION, EXPORT_SUBSCRIPTION_OFFER,
+        QUERY_TRANSACTION_STATUS,
+        EXPORT_TRANSACTION_LIST,
+        INSTANT_CONVERSION
     }
+    
 }

@@ -46,6 +46,10 @@ namespace PayXpertLibrary
             return new QueryTransactionStatus(TransactionTypes.QUERY_TRANSACTION_STATUS, originatorId, password, url, transactionId);
         }
 
+        public ExportTransactionList NewExportTransactionList(String StartDate, String EndDate, String TransactionOperation)
+        {
+            return new ExportTransactionList(TransactionTypes.EXPORT_TRANSACTION_LIST, originatorId, password, url, StartDate, EndDate, TransactionOperation);
+        }
 
     }
 }
