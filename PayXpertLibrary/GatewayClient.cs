@@ -46,6 +46,11 @@ namespace PayXpertLibrary
             return new CaptureRebillCancelTransaction(TransactionTypes.CANCEL, originatorId, password, url, transactionId);
         }
 
+        public CaptureRebillCancelTransaction NewCreditFundsTransferTransaction(String transactionId)
+        {
+            return new CaptureRebillCancelTransaction(TransactionTypes.CREDIT, originatorId, password, url, transactionId);
+        }
+
         public RefundTransaction NewRefundTransaction(String transactionId)
         {
             return new RefundTransaction(TransactionTypes.REFUND, originatorId, password, url, transactionId);

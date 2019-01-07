@@ -152,6 +152,40 @@ namespace SDKTest
             }
         }
 
+        private static void TestSaleAndCFT()
+        {
+            var client = new GatewayClient(OriginatorConfig.ORIGINATOR_ID, OriginatorConfig.ORIGINATOR_PASSWORD);
+            var transaction = client.NewSaleTransaction();
+
+            var amount = 5000;
+
+            transaction.SetTransactionInformation(amount, "EUR", "50", "8.8.8.8");
+            transaction.SetCardInformation("4111111111111111", "000", "CSHARP SDK", "10", "2024");
+            transaction.SetShopperInformation("CSHARP SDK", "MICROSOFT HELL", "666", "REDMOND", "WA", "US", "12445", "x@x.rr");
+
+            var response = transaction.Send();
+
+            if (response.IsSuccessfull())
+            {
+                Console.WriteLine("Authorize operation ok. Transaction ID: " + response.transactionID);
+                Console.WriteLine("Performing transferring of funds ...");
+
+                var creditTransaction = client.NewCreditFundsTransferTransaction(response.transactionID);
+                creditTransaction.SetAmount(amount);
+
+                var creditResponse = creditTransaction.Send();
+
+                if (creditResponse.IsSuccessfull())
+                {
+                    Console.WriteLine("Credit is ok. New transaction ID: " + creditResponse.transactionID);
+                }
+                else
+                {
+                    Console.WriteLine("Error performing credit: " + creditResponse.errorMessage);
+                }
+            }
+        }
+
         private static void DisplayMenu()
         {
             while (true)
@@ -163,6 +197,7 @@ namespace SDKTest
                 Console.WriteLine("2: Export transactions: last month");
                 Console.WriteLine("3: Authorize + capture");
                 Console.WriteLine("4: Authorize + cancel");
+                Console.WriteLine("5: Sale + credit funds transfer");
                 Console.WriteLine("\nType 0 to exit");
 
                 ConsoleKeyInfo key = Console.ReadKey();
@@ -182,6 +217,10 @@ namespace SDKTest
                 else if (key.KeyChar == '4')
                 {
                     TestAuthAndCancel();
+                }
+                else if (key.KeyChar == '5')
+                {
+                    TestSaleAndCFT();
                 }
                 else if (key.KeyChar == '0')
                 {

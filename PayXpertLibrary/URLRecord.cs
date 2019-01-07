@@ -43,7 +43,7 @@ namespace PayXpertLibrary
             }
             else if (action == TransactionTypes.CREDIT)
             {
-                Url = "transaction/:transactionID/credit";
+                Url = "transaction/" + transactionId + "/credit";
                 Method = "POST";
             }
             else if (action == TransactionTypes.CAPTURE)
