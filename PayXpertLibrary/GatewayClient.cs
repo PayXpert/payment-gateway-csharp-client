@@ -82,6 +82,11 @@ namespace PayXpertLibrary
             return new BlacklistUserTransaction(TransactionTypes.BLACKLIST_TRANSACTION, originatorId, password, url, transactionId);
         }
 
+        public BlacklistValueTransaction NewBlacklistValueTransaction()
+        {
+            return new BlacklistValueTransaction(TransactionTypes.BLACKLIST_VALUE, originatorId, password, url);
+        }
+
         #endregion
     }
 }

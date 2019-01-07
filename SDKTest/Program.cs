@@ -5,6 +5,8 @@ namespace SDKTest
 {
     class Program
     {
+        private static String customerIP = "8.8.8.8";
+
         private static void TestSaleAndRefund()
         {
             var client = new GatewayClient(OriginatorConfig.ORIGINATOR_ID, OriginatorConfig.ORIGINATOR_PASSWORD);
@@ -12,7 +14,7 @@ namespace SDKTest
 
             var amount = 1000;
 
-            transaction.SetTransactionInformation(amount, "EUR", "50", "8.8.8.8");
+            transaction.SetTransactionInformation(amount, "EUR", "50", customerIP);
             transaction.SetCardInformation("4111111111111111", "000", "CSHARP SDK", "10", "2024");
             transaction.SetShopperInformation("CSHARP SDK", "MICROSOFT HELL", "666", "REDMOND", "WA", "US", "12445", "x@x.rr");
 
@@ -91,7 +93,7 @@ namespace SDKTest
 
             var amount = 1250;
 
-            transaction.SetTransactionInformation(amount, "EUR", "50", "8.8.8.8");
+            transaction.SetTransactionInformation(amount, "EUR", "50", customerIP);
             transaction.SetCardInformation("4111111111111111", "000", "CSHARP SDK", "10", "2024");
             transaction.SetShopperInformation("CSHARP SDK", "MICROSOFT HELL", "666", "REDMOND", "WA", "US", "12445", "x@x.rr");
 
@@ -125,7 +127,7 @@ namespace SDKTest
 
             var amount = 1420;
 
-            transaction.SetTransactionInformation(amount, "EUR", "50", "8.8.8.8");
+            transaction.SetTransactionInformation(amount, "EUR", "50", customerIP);
             transaction.SetCardInformation("4111111111111111", "000", "CSHARP SDK", "10", "2024");
             transaction.SetShopperInformation("CSHARP SDK", "MICROSOFT HELL", "666", "REDMOND", "WA", "US", "12445", "x@x.rr");
 
@@ -159,7 +161,7 @@ namespace SDKTest
 
             var amount = 5000;
 
-            transaction.SetTransactionInformation(amount, "EUR", "50", "8.8.8.8");
+            transaction.SetTransactionInformation(amount, "EUR", "50", customerIP);
             transaction.SetCardInformation("4111111111111111", "000", "CSHARP SDK", "10", "2024");
             transaction.SetShopperInformation("CSHARP SDK", "MICROSOFT HELL", "666", "REDMOND", "WA", "US", "12445", "x@x.rr");
 
@@ -193,7 +195,7 @@ namespace SDKTest
 
             var amount = 5000;
 
-            transaction.SetTransactionInformation(amount, "EUR", "50", "8.8.8.8");
+            transaction.SetTransactionInformation(amount, "EUR", "50", customerIP);
             transaction.SetCardInformation("4111111111111111", "000", "CSHARP SDK", "10", "2024");
             transaction.SetShopperInformation("CSHARP SDK", "MICROSOFT HELL", "666", "REDMOND", "WA", "US", "12445", "x@x.rr");
 
@@ -221,6 +223,26 @@ namespace SDKTest
             }
         }
 
+        private static void BlacklistValueTest()
+        {
+            Console.WriteLine("Performing blacklisting of customer IP: " + customerIP);
+
+            var client = new GatewayClient(OriginatorConfig.ORIGINATOR_ID, OriginatorConfig.ORIGINATOR_PASSWORD);
+            var transaction = client.NewBlacklistValueTransaction();
+            transaction.SetValue(BlacklistValueType.CUSTOMER_IP, customerIP);
+
+            var blacklistResponse = transaction.Send();
+
+            if (blacklistResponse.IsSuccessfull())
+            {
+                Console.WriteLine("Blacklist is ok: " + blacklistResponse.errorMessage);
+            }
+            else
+            {
+                Console.WriteLine("Error blacklisting: " + blacklistResponse.errorMessage);
+            }
+        }
+
         private static void DisplayMenu()
         {
             while (true)
@@ -234,6 +256,7 @@ namespace SDKTest
                 Console.WriteLine("4: Authorize + cancel");
                 Console.WriteLine("5: Sale + credit funds transfer");
                 Console.WriteLine("6: Sale + blacklist card number");
+                Console.WriteLine("7: Blacklist customer IP " + customerIP);
                 Console.WriteLine("\nType 0 to exit");
 
                 ConsoleKeyInfo key = Console.ReadKey();
@@ -261,6 +284,10 @@ namespace SDKTest
                 else if (key.KeyChar == '6')
                 {
                     TestSaleAndBlacklist();
+                }
+                else if (key.KeyChar == '7')
+                {
+                    BlacklistValueTest();
                 }
                 else if (key.KeyChar == '0')
                 {

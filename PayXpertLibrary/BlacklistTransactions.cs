@@ -33,4 +33,54 @@ namespace PayXpertLibrary
             return SendRequestToServer<BaseResponseObject>();
         }
     }
+
+    public enum BlacklistValueType
+    {
+        CREDIT_CARD_NUMBER, TODITO_CARD_NUMBER, ACCOUNT_NUMBER, SHOPPER_EMAIL, CUSTOMER_IP
+    }
+
+    public class BlacklistValueTransaction : TransactionBase
+    {
+        public BlacklistValueTransaction(TransactionTypes Type, String OriginatorId, String Password, String BaseURL) : base(Type, OriginatorId, Password, BaseURL, null)
+        {
+            
+        }
+
+        public void SetValue(BlacklistValueType valueType, String value)
+        {
+            String valueTypeStr = null;
+
+            if (valueType == BlacklistValueType.CREDIT_CARD_NUMBER)
+            {
+                valueTypeStr = "creditCardNumber";                   
+            }
+            else if (valueType == BlacklistValueType.TODITO_CARD_NUMBER)
+            {
+                valueTypeStr = "toditoCardNumber";
+            }
+            else if (valueType == BlacklistValueType.ACCOUNT_NUMBER)
+            {
+                valueTypeStr = "accountNumber";
+            }
+            else if (valueType == BlacklistValueType.SHOPPER_EMAIL)
+            {
+                valueTypeStr = "shopperEmail";
+            }
+            else if (valueType == BlacklistValueType.CUSTOMER_IP)
+            {
+                valueTypeStr = "customerIP";
+            }
+
+            var requestObject = new RequestBlacklistValue();
+            requestObject.valueType = valueTypeStr;
+            requestObject.value = value;
+
+            this.requestObject = requestObject;
+        }
+
+        public BaseResponseObject Send()
+        {
+            return SendRequestToServer<BaseResponseObject>();
+        }
+    }
 }

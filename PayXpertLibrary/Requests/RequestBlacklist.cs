@@ -10,4 +10,10 @@ namespace PayXpertLibrary.Requests
         public String shopperEmailBlackList { get; set; }
         public String customerIPBlackList { get; set; }
     }
+
+    class RequestBlacklistValue : BaseRequestObject
+    {
+        public String valueType { get; set; }
+        public String value { get; set; }
+    }
 }
