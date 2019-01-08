@@ -88,7 +88,7 @@ namespace PayXpertLibrary
 
         protected void SetInUrl(String name, String value)
         {
-            this.url.setInURL(name, value);
+            this.url.SetInURL(name, value);
         }
     }
 }

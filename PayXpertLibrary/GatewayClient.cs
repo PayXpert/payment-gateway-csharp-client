@@ -134,6 +134,13 @@ namespace PayXpertLibrary
 
         #endregion
 
+        #region 3D Secure
 
+        public Transaction3DSCheck New3DSCheckTransaction()
+        {
+            return new Transaction3DSCheck(TransactionTypes._3DSCHECK, originatorId, password, url);
+        }
+
+        #endregion
     }
 }

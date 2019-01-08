@@ -33,7 +33,7 @@ namespace PayXpertLibrary
             }
             else if (action == TransactionTypes._3DSPARSE)
             {
-                Url = "transaction/:transactionID/3dsparse";
+                Url = "transaction/" + objectId + "/3dsparse";
                 Method = "POST";
             }
             else if (action == TransactionTypes.REFUND)
@@ -115,7 +115,7 @@ namespace PayXpertLibrary
 
         }
 
-        public void setInURL(String name, String value)
+        public void SetInURL(String name, String value)
         {
             String paramToReplace = ":" + name;
             this.Url = this.Url.Replace(paramToReplace, value);
