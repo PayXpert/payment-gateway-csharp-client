@@ -9,7 +9,7 @@ namespace PayXpertLibrary
         public String Url { get; set; }
         public String Method { get; set; }
 
-        public URLRecord(TransactionTypes action, String transactionId)
+        public URLRecord(TransactionTypes action, String objectId)
         {
             if (action == TransactionTypes.AUTHORIZE)
             {
@@ -38,32 +38,32 @@ namespace PayXpertLibrary
             }
             else if (action == TransactionTypes.REFUND)
             {
-                Url = "transaction/" + transactionId + "/refund";
+                Url = "transaction/" + objectId + "/refund";
                 Method = "POST";
             }
             else if (action == TransactionTypes.CREDIT)
             {
-                Url = "transaction/" + transactionId + "/credit";
+                Url = "transaction/" + objectId + "/credit";
                 Method = "POST";
             }
             else if (action == TransactionTypes.CAPTURE)
             {
-                Url = "transaction/" + transactionId + "/capture";
+                Url = "transaction/" + objectId + "/capture";
                 Method = "POST";
             }
             else if (action == TransactionTypes.CANCEL)
             {
-                Url = "transaction/" + transactionId + "/cancel";
+                Url = "transaction/" + objectId + "/cancel";
                 Method = "POST";
             }
             else if (action == TransactionTypes.REBILL)
             {
-                Url = "transaction/" + transactionId + "/rebill";
+                Url = "transaction/" + objectId + "/rebill";
                 Method = "POST";
             }
             else if (action == TransactionTypes.BLACKLIST_TRANSACTION)
             {
-                Url = "transaction/" + transactionId + "/blacklist";
+                Url = "transaction/" + objectId + "/blacklist";
                 Method = "POST";
             }
             else if (action == TransactionTypes.BLACKLIST_VALUE)
@@ -73,26 +73,26 @@ namespace PayXpertLibrary
             }
             else if (action == TransactionTypes.CANCEL_SUBSCRIPTION)
             {
-                Url = "subscription/" + transactionId + "/cancel";
+                Url = "subscription/" + objectId + "/cancel";
                 Method = "POST";
             }
             else if (action == TransactionTypes.INSTANT_CONVERSION)
             {
-                Url = "subscription/" + transactionId + "/instantconversion";
+                Url = "subscription/" + objectId + "/instantconversion";
                 Method = "POST";
             }
             else if (action == TransactionTypes.STATUS_SUBSCRIPTION)
             {
-                Url = "subscription/" + transactionId;
+                Url = "subscription/" + objectId;
                 Method = "GET";
             }
             else if (action == TransactionTypes.EXPORT_TRANSACTION_LIST)
             {
                 Url = "transactions";
 
-                if (transactionId != null)
+                if (objectId != null)
                 {
-                    Url = Url + "/" + transactionId;
+                    Url = Url + "/" + objectId;
                 }
 
                 Method = "GET";
@@ -104,12 +104,12 @@ namespace PayXpertLibrary
             }
             else if (action == TransactionTypes.EXPORT_SUBSCRIPTION_OFFER)
             {
-                Url = "subscription/offer/:offerID";
+                Url = "subscription/offer/" + objectId;
                 Method = "GET";
             }
             else if (action == TransactionTypes.QUERY_TRANSACTION_STATUS)
             {
-                Url = "transaction/" + transactionId;
+                Url = "transaction/" + objectId;
                 Method = "GET";
             }
 

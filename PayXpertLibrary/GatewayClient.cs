@@ -127,6 +127,11 @@ namespace PayXpertLibrary
             return NewExportSubscriptionsListTransaction(timestampStart.ToString(), timestampEnd.ToString(), allSubscriptions);
         }
 
+        public ExportSubscriptionOfferTransaction NewExportSubscriptionOfferTransaction(String offerId)
+        {
+            return new ExportSubscriptionOfferTransaction(TransactionTypes.EXPORT_SUBSCRIPTION_OFFER, originatorId, password, url, offerId);
+        }
+
         #endregion
 
 

@@ -26,7 +26,7 @@ namespace PayXpertLibrary.Responses
         public List<Subscription> subscriptionList { get; set; }
     }
 
-    public class ResponseSubscriptionExportOffers : BaseResponseObject
+    public class ResponseSubscriptionExportOffer : BaseResponseObject
     {
         public Offer offer { get; set; }
     }

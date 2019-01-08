@@ -70,4 +70,18 @@ namespace PayXpertLibrary
 
     }
 
+    public class ExportSubscriptionOfferTransaction : TransactionBase
+    {
+        public ExportSubscriptionOfferTransaction(TransactionTypes Type, String OriginatorId, String Password, String BaseURL, String OfferId) : base(Type, OriginatorId, Password, BaseURL, OfferId)
+        {
+
+        }
+
+        public async Task<ResponseSubscriptionExportOffer> Send()
+        {
+            return await SendRequestToServer<ResponseSubscriptionExportOffer>();
+        }
+
+    }
+
 }
