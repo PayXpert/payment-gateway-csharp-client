@@ -42,4 +42,21 @@ namespace PayXpertLibrary
         }
 
     }
+
+    public class Transaction3DSParse : TransactionBase
+    {
+        public Transaction3DSParse(TransactionTypes Type, String OriginatorId, String Password, String BaseURL, String transactionId, String PARes) : base(Type, OriginatorId, Password, BaseURL, transactionId)
+        {
+            var obj = new Request3DSParse();
+            obj.transactionID = transactionId;
+            obj.PaRes = PARes;
+            this.requestObject = obj;
+        }
+
+        public async Task<Response3DSParseObject> Send()
+        {
+            return await SendRequestToServer<Response3DSParseObject>();
+        }
+
+    }
 }

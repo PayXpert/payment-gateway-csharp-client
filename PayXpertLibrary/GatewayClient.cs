@@ -141,6 +141,11 @@ namespace PayXpertLibrary
             return new Transaction3DSCheck(TransactionTypes._3DSCHECK, originatorId, password, url);
         }
 
+        public Transaction3DSParse New3DSParseTransaction(String transactionId, String PARes)
+        {
+            return new Transaction3DSParse(TransactionTypes._3DSCHECK, originatorId, password, url, transactionId, PARes);
+        }
+
         #endregion
     }
 }

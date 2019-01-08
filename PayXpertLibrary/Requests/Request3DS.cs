@@ -22,4 +22,10 @@ namespace PayXpertLibrary.Requests
         public String cardExpireYear { get; set; }
 
     }
+
+    class Request3DSParse : BaseRequestObject
+    {
+        public String transactionID { get; set; }
+        public String PaRes { get; set; }
+    }
 }
