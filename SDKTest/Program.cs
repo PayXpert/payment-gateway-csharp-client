@@ -28,6 +28,7 @@ namespace SDKTest
                 Console.WriteLine("6: Sale + blacklist card number");
                 Console.WriteLine("7: Blacklist customer IP " + customerIP);
                 Console.WriteLine("8: Subscription: create, instant conversion, cancel");
+                Console.WriteLine("9: Subscription: export list");
 
                 Console.WriteLine("\nType 0 to exit\n");
 
@@ -64,6 +65,10 @@ namespace SDKTest
                 else if (key.KeyChar == '8')
                 {
                     TestSubscriptionInstantConversion();
+                }
+                else if (key.KeyChar == '9')
+                {
+                    TestExportSubscriptions();
                 }
                 else if (key.KeyChar == '0')
                 {

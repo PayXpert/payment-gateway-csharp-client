@@ -74,15 +74,10 @@ namespace SDKTest
 
         private static void TestExportTransactions()
         {
-            Console.WriteLine("Retrieving list of transactions from server...");
-
-            var currentUnixTimestamp = (Int32)(DateTime.UtcNow.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
-            var prevUnixTimestamp = currentUnixTimestamp - (60 * 60 * 24 * 30);
+            Console.WriteLine("Retrieving list of transactions from server for last month...");
 
             var client = new GatewayClient(OriginatorConfig.ORIGINATOR_ID, OriginatorConfig.ORIGINATOR_PASSWORD);
-
-            var exportTransactions = client.NewExportTransactionList(prevUnixTimestamp.ToString(), currentUnixTimestamp.ToString(), null);
-
+            var exportTransactions = client.NewExportTransactionList(DateTime.UtcNow.AddMonths(-1), DateTime.UtcNow, null);
             var transactions = exportTransactions.Send().Result;
 
             Console.WriteLine("Total number of retrieved transactions: " + transactions.transactionList.Count.ToString());

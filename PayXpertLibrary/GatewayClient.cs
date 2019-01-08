@@ -73,6 +73,14 @@ namespace PayXpertLibrary
             return new ExportTransactionList(TransactionTypes.EXPORT_TRANSACTION_LIST, originatorId, password, url, StartDate, EndDate, TransactionOperation);
         }
 
+        public ExportTransactionList NewExportTransactionList(DateTime StartDate, DateTime EndDate, String TransactionOperation)
+        {
+            var timestampStart = (Int32)(StartDate.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+            var timestampEnd = (Int32)(EndDate.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+
+            return NewExportTransactionList(timestampStart.ToString(), timestampEnd.ToString(), TransactionOperation);
+        }
+
         #endregion
 
         #region Blacklist transactions
@@ -104,6 +112,19 @@ namespace PayXpertLibrary
         public QuerySubscriptionTransaction NewQuerySubscriptionTransaction(String subscriptionId)
         {
             return new QuerySubscriptionTransaction(TransactionTypes.STATUS_SUBSCRIPTION, originatorId, password, url, subscriptionId);
+        }
+
+        public ExportSubscriptionsListTransaction NewExportSubscriptionsListTransaction(String StartDate, String EndDate, Boolean allSubscriptions)
+        {
+            return new ExportSubscriptionsListTransaction(TransactionTypes.EXPORT_SUBSCRIPTION, originatorId, password, url, StartDate, EndDate, allSubscriptions);
+        }
+
+        public ExportSubscriptionsListTransaction NewExportSubscriptionsListTransaction(DateTime StartDate, DateTime EndDate, Boolean allSubscriptions)
+        {
+            var timestampStart = (Int32)(StartDate.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+            var timestampEnd = (Int32)(EndDate.Subtract(new DateTime(1970, 1, 1))).TotalSeconds;
+
+            return NewExportSubscriptionsListTransaction(timestampStart.ToString(), timestampEnd.ToString(), allSubscriptions);
         }
 
         #endregion

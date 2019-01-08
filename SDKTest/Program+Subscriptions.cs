@@ -60,5 +60,16 @@ namespace SDKTest
             }
         }
 
+        private static void TestExportSubscriptions()
+        {
+            Console.WriteLine("Retrieving list of subscriptions from server for last month...");
+
+            var client = new GatewayClient(OriginatorConfig.ORIGINATOR_ID, OriginatorConfig.ORIGINATOR_PASSWORD);
+            var exportSubscriptions = client.NewExportSubscriptionsListTransaction(DateTime.UtcNow.AddMonths(-1), DateTime.UtcNow, true);
+            var subscriptions = exportSubscriptions.Send().Result;
+
+            Console.WriteLine("Total number of retrieved subscriptions: " + subscriptions.subscriptionList.Count.ToString());
+        }
+
     }
 }

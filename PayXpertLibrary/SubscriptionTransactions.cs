@@ -55,5 +55,19 @@ namespace PayXpertLibrary
 
     }
 
+    public class ExportSubscriptionsListTransaction : TransactionBase
+    {
+        public ExportSubscriptionsListTransaction(TransactionTypes Type, String OriginatorId, String Password, String BaseURL, String startDate, String endDate, bool allSubscriptions) : base(Type, OriginatorId, Password, BaseURL, null)
+        {
+            String allSubscriptionsSym = allSubscriptions ? "1" : "0";
+            this.getParams = "startDate=" + startDate + "&endDate=" + endDate + "&allSubscriptions=" + allSubscriptionsSym;
+        }
+
+        public async Task<ResponseSubscriptionExportList> Send()
+        {
+            return await SendRequestToServer<ResponseSubscriptionExportList>();
+        }
+
+    }
 
 }
