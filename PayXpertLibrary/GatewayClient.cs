@@ -139,7 +139,7 @@ namespace PayXpertLibrary
 
         public Transaction3DSParse New3DSParseTransaction(String transactionId, String PARes)
         {
-            return new Transaction3DSParse(TransactionTypes._3DSCHECK, originatorId, password, url, transactionId, PARes);
+            return new Transaction3DSParse(TransactionTypes._3DSPARSE, originatorId, password, url, transactionId, PARes);
         }
 
         #endregion

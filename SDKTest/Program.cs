@@ -28,48 +28,59 @@ namespace SDKTest
                 Console.WriteLine("7: Blacklist customer IP " + customerIP);
                 Console.WriteLine("8: Subscription: create, instant conversion, cancel");
                 Console.WriteLine("9: Subscription: export list");
+                Console.WriteLine("10: 3D secure: check");
+                Console.WriteLine("11: 3D secure: validate + sale");
 
                 Console.WriteLine("\nType 0 to exit\n");
+                Console.WriteLine("Please type relevant number and press ENTER key\n");
 
-                ConsoleKeyInfo key = Console.ReadKey();
+                String key = Console.ReadLine();
 
-                if (key.KeyChar == '1')
+                if (key == "1")
                 {
                     TestSaleAndRefund();
                 }
-                else if (key.KeyChar == '2')
+                else if (key == "2")
                 {
                     TestExportTransactions();
                 }
-                else if (key.KeyChar == '3')
+                else if (key == "3")
                 {
                     TestAuthAndCapture();
                 }
-                else if (key.KeyChar == '4')
+                else if (key == "4")
                 {
                     TestAuthAndCancel();
                 }
-                else if (key.KeyChar == '5')
+                else if (key == "5")
                 {
                     TestSaleAndCFT();
                 }
-                else if (key.KeyChar == '6')
+                else if (key == "6")
                 {
                     TestSaleAndBlacklist();
                 }
-                else if (key.KeyChar == '7')
+                else if (key == "7")
                 {
                     BlacklistValueTest();
                 }
-                else if (key.KeyChar == '8')
+                else if (key == "8")
                 {
                     TestSubscriptionInstantConversion();
                 }
-                else if (key.KeyChar == '9')
+                else if (key == "9")
                 {
                     TestExportSubscriptions();
                 }
-                else if (key.KeyChar == '0')
+                else if (key == "10")
+                {
+                    Test3DS_Check();
+                }
+                else if (key == "11")
+                {
+                    Test3DS_Parse();
+                }
+                else if (key == "0")
                 {
                     return;
                 }

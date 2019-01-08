@@ -105,6 +105,28 @@ namespace PayXpertLibrary
             obj.trialPeriod = trialPeriod;
         }
 
+        public void Set3DSInformation(String PaRes, Response3DSParseObject response)
+        {
+            var obj = this.requestObject as RequestSale;
+
+            obj.PaRes = PaRes;
+            obj.ECI = response.ECI;
+            obj.XID = response.XID;
+            obj.CAVV = response.CAVV;
+            obj.CAVVAlgorithm = response.CAVVAlgorithm;
+        }
+
+        public void Set3DSInformation(String PaRes, String ECI, String XID, String CAVV, String CAVVAlgorithm)
+        {
+            var obj = this.requestObject as RequestSale;
+
+            obj.PaRes = PaRes;
+            obj.ECI = ECI;
+            obj.XID = XID;
+            obj.CAVV = CAVV;
+            obj.CAVVAlgorithm = CAVVAlgorithm;
+        }
+
     }
 
     public class CaptureRebillCancelTransaction : TransactionBase
