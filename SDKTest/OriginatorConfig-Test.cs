@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace SDKTest
+﻿namespace SDKTest
 {
-//    class OriginatorConfig
-//    {
-//        public static String ORIGINATOR_ID = "";
-//        public static String ORIGINATOR_PASSWORD = "";
-//    }
+    //    class OriginatorConfig
+    //    {
+    //        public static String ORIGINATOR_ID = "";
+    //        public static String ORIGINATOR_PASSWORD = "";
+    //    }
 }

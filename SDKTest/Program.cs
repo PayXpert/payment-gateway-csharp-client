@@ -1,5 +1,4 @@
-﻿using PayXpertLibrary;
-using System;
+﻿using System;
 
 namespace SDKTest
 {

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace PayXpertLibrary.Responses
+﻿namespace PayXpertLibrary.Responses
 {
     public class Response3DSCheckObject : BaseTransactionResponseObject
     {

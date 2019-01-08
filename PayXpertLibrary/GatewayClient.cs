@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace PayXpertLibrary
 {
@@ -9,8 +7,6 @@ namespace PayXpertLibrary
         private String url;
         private String originatorId;
         private String password;
-
-        private String proxy = null;
 
         public GatewayClient(String Url, String OriginatorId, String Password)
         {

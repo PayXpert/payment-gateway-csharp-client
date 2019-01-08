@@ -1,11 +1,6 @@
-﻿using Newtonsoft.Json;
-using PayXpertLibrary.Requests;
+﻿using PayXpertLibrary.Requests;
 using PayXpertLibrary.Responses;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Net;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace PayXpertLibrary
