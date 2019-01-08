@@ -1,6 +1,12 @@
 # PayXpert Payment Gateway C# SDK
 
 This library is the official C# client to interact with the PayXpert Payment Gateway system. The whole payment workflow is implemented through easy to use methods.
+This repository contains Visual Studio solutions with two projects
+
+* PayXpertLibrary (for PaymentGateway)
+* SDKTest application (console Windows application)
+
+Exploring SDKTest sources you can find suggestions about this SDK usage.
 
 ## Compatibility
 
