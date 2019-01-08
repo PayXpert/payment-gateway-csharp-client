@@ -18,7 +18,7 @@ namespace SDKTest
             transaction.SetCardInformation("4111111111111111", "000", "CSHARP SDK", "10", "2024");
             transaction.SetShopperInformation("CSHARP SDK", "MICROSOFT HELL", "666", "REDMOND", "WA", "US", "12445", "x@x.rr");
 
-            var response = transaction.Send();
+            var response = transaction.Send().Result;
 
             if (response.IsSuccessfull())
             {
@@ -27,7 +27,7 @@ namespace SDKTest
 
                 // Will query transaction from server
                 var queryTransactionSale = client.NewQueryTransactionStatus(response.transactionID);
-                var transactionInfo = queryTransactionSale.Send();
+                var transactionInfo = queryTransactionSale.Send().Result;
                 Console.WriteLine("Transaction timestamp retrieved from server: " + transactionInfo.transaction.date);
                 Console.WriteLine("========================================\n");
 
@@ -37,7 +37,7 @@ namespace SDKTest
                 var refundTransaction = client.NewRefundTransaction(response.transactionID);
                 refundTransaction.SetInformationForRefund(amount, null);
 
-                var refundResponse = refundTransaction.Send();
+                var refundResponse = refundTransaction.Send().Result;
 
                 if (refundResponse.IsSuccessfull())
                 {
@@ -53,7 +53,7 @@ namespace SDKTest
                 var rebillTransaction = client.NewRebillTransaction(response.transactionID);
                 rebillTransaction.SetAmount(amount * 2);
 
-                var rebillResponse = rebillTransaction.Send();
+                var rebillResponse = rebillTransaction.Send().Result;
 
                 if (rebillResponse.IsSuccessfull())
                 {
@@ -81,7 +81,7 @@ namespace SDKTest
 
             var exportTransactions = client.NewExportTransactionList(prevUnixTimestamp.ToString(), currentUnixTimestamp.ToString(), null);
 
-            var transactions = exportTransactions.Send();
+            var transactions = exportTransactions.Send().Result;
 
             Console.WriteLine("Total number of retrieved transactions: " + transactions.transactionList.Count.ToString());
         }
@@ -97,7 +97,7 @@ namespace SDKTest
             transaction.SetCardInformation("4111111111111111", "000", "CSHARP SDK", "10", "2024");
             transaction.SetShopperInformation("CSHARP SDK", "MICROSOFT HELL", "666", "REDMOND", "WA", "US", "12445", "x@x.rr");
 
-            var response = transaction.Send();
+            var response = transaction.Send().Result;
 
             if (response.IsSuccessfull())
             {
@@ -107,7 +107,7 @@ namespace SDKTest
                 var captureTransaction = client.NewCaptureTransaction(response.transactionID);
                 captureTransaction.SetAmount(amount);
 
-                var captureResponse = captureTransaction.Send();
+                var captureResponse = captureTransaction.Send().Result;
 
                 if (captureResponse.IsSuccessfull())
                 {
@@ -131,7 +131,7 @@ namespace SDKTest
             transaction.SetCardInformation("4111111111111111", "000", "CSHARP SDK", "10", "2024");
             transaction.SetShopperInformation("CSHARP SDK", "MICROSOFT HELL", "666", "REDMOND", "WA", "US", "12445", "x@x.rr");
 
-            var response = transaction.Send();
+            var response = transaction.Send().Result;
 
             if (response.IsSuccessfull())
             {
@@ -141,7 +141,7 @@ namespace SDKTest
                 var cancelTransaction = client.NewCancelTransaction(response.transactionID);
                 cancelTransaction.SetAmount(amount);
 
-                var cancelResponse = cancelTransaction.Send();
+                var cancelResponse = cancelTransaction.Send().Result;
 
                 if (cancelResponse.IsSuccessfull())
                 {
@@ -165,7 +165,7 @@ namespace SDKTest
             transaction.SetCardInformation("4111111111111111", "000", "CSHARP SDK", "10", "2024");
             transaction.SetShopperInformation("CSHARP SDK", "MICROSOFT HELL", "666", "REDMOND", "WA", "US", "12445", "x@x.rr");
 
-            var response = transaction.Send();
+            var response = transaction.Send().Result;
 
             if (response.IsSuccessfull())
             {
@@ -175,7 +175,7 @@ namespace SDKTest
                 var creditTransaction = client.NewCreditFundsTransferTransaction(response.transactionID);
                 creditTransaction.SetAmount(amount);
 
-                var creditResponse = creditTransaction.Send();
+                var creditResponse = creditTransaction.Send().Result;
 
                 if (creditResponse.IsSuccessfull())
                 {
@@ -199,7 +199,7 @@ namespace SDKTest
             transaction.SetCardInformation("4111111111111111", "000", "CSHARP SDK", "10", "2024");
             transaction.SetShopperInformation("CSHARP SDK", "MICROSOFT HELL", "666", "REDMOND", "WA", "US", "12445", "x@x.rr");
 
-            var response = transaction.Send();
+            var response = transaction.Send().Result;
 
             if (response.IsSuccessfull())
             {
@@ -210,7 +210,7 @@ namespace SDKTest
 
                 blacklistTransaction.DoBlacklistCardNumber();
 
-                var blacklistResponse = blacklistTransaction.Send();
+                var blacklistResponse = blacklistTransaction.Send().Result;
 
                 if (blacklistResponse.IsSuccessfull())
                 {
@@ -231,7 +231,7 @@ namespace SDKTest
             var transaction = client.NewBlacklistValueTransaction();
             transaction.SetValue(BlacklistValueType.CUSTOMER_IP, customerIP);
 
-            var blacklistResponse = transaction.Send();
+            var blacklistResponse = transaction.Send().Result;
 
             if (blacklistResponse.IsSuccessfull())
             {

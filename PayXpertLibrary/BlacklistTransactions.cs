@@ -3,6 +3,7 @@ using PayXpertLibrary.Responses;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace PayXpertLibrary
 {
@@ -28,9 +29,9 @@ namespace PayXpertLibrary
             ((RequestBlacklistUser)this.requestObject).customerIPBlackList = "1";
         }
 
-        public BaseResponseObject Send()
+        public async Task<BaseResponseObject> Send()
         {
-            return SendRequestToServer<BaseResponseObject>();
+            return await SendRequestToServer<BaseResponseObject>();
         }
     }
 
@@ -73,9 +74,9 @@ namespace PayXpertLibrary
             this.requestObject = requestObject;
         }
 
-        public BaseResponseObject Send()
+        public async Task<BaseResponseObject> Send()
         {
-            return SendRequestToServer<BaseResponseObject>();
+            return await SendRequestToServer<BaseResponseObject>();
         }
     }
 }

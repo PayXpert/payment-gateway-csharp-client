@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace PayXpertLibrary
 {
@@ -16,9 +17,9 @@ namespace PayXpertLibrary
             this.requestObject = new RequestSale();
         }
 
-        public SaleResponseObject Send()
+        public async Task<SaleResponseObject> Send()
         {
-            return SendRequestToServer<SaleResponseObject>();
+            return await SendRequestToServer<SaleResponseObject>();
         }
 
         public void SetTransactionInformation(int amount, String currency, String orderId, String customerIP = null)
@@ -120,9 +121,9 @@ namespace PayXpertLibrary
             this.requestObject = request;
         }
 
-        public BaseTransactionResponseObject Send()
+        public async Task<BaseTransactionResponseObject> Send()
         {
-            return SendRequestToServer<BaseTransactionResponseObject>();
+            return await SendRequestToServer<BaseTransactionResponseObject>();
         }
 
         public void SetAmount(int amount)
@@ -140,9 +141,9 @@ namespace PayXpertLibrary
             this.requestObject = request;
         }
 
-        public BaseTransactionResponseObject Send()
+        public async Task<BaseTransactionResponseObject> Send()
         {
-            return SendRequestToServer<BaseTransactionResponseObject>();
+            return await SendRequestToServer<BaseTransactionResponseObject>();
         }
 
         public void SetInformationForRefund(int Amount, bool? IsSubscription)
@@ -162,9 +163,9 @@ namespace PayXpertLibrary
 
         }
 
-        public QueryTransactionResponseObject Send()
+        public async Task<QueryTransactionResponseObject> Send()
         {
-            return SendRequestToServer<QueryTransactionResponseObject>();
+            return await SendRequestToServer<QueryTransactionResponseObject>();
         }
 
     }
@@ -194,7 +195,7 @@ namespace PayXpertLibrary
             this.transactionErrorCode = TransactionErrorCode;
         }
 
-        public ExportTransactionsReponseObject Send()
+        public async Task<ExportTransactionsReponseObject> Send()
         {
             this.getParams = "startDate=" + StartDate + "&endDate=" + EndDate;
 
@@ -208,7 +209,7 @@ namespace PayXpertLibrary
                 this.getParams = this.getParams + "&transactionErrorCode" + transactionErrorCode;
             }
         
-            return SendRequestToServer<ExportTransactionsReponseObject>();
+            return await SendRequestToServer<ExportTransactionsReponseObject>();
         }
 
     }

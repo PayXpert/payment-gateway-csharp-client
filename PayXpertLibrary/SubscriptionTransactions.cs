@@ -3,6 +3,7 @@ using PayXpertLibrary.Responses;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace PayXpertLibrary
 {
@@ -13,9 +14,9 @@ namespace PayXpertLibrary
             
         }
 
-        public ResponseSubscriptionInstantConversion Send()
+        public async Task<ResponseSubscriptionInstantConversion> Send()
         {
-            return SendRequestToServer<ResponseSubscriptionInstantConversion>();
+            return await SendRequestToServer<ResponseSubscriptionInstantConversion>();
         }
 
     }
@@ -27,9 +28,9 @@ namespace PayXpertLibrary
 
         }
 
-        public ResponseSubscriptionCancel Send()
+        public async Task<ResponseSubscriptionCancel> Send()
         {
-            return SendRequestToServer<ResponseSubscriptionCancel>();
+            return await SendRequestToServer<ResponseSubscriptionCancel>();
         }
 
         public void SetCancelReason(int reason)
@@ -47,9 +48,9 @@ namespace PayXpertLibrary
 
         }
 
-        public ResponseSubscriptionQuery Send()
+        public async Task<ResponseSubscriptionQuery> Send()
         {
-            return SendRequestToServer<ResponseSubscriptionQuery>();
+            return await SendRequestToServer<ResponseSubscriptionQuery>();
         }
 
     }

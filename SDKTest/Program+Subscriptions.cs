@@ -23,7 +23,7 @@ namespace SDKTest
 
             transaction.SetSubscriptionInformation(SubscriptionType.NORMAL, 1000, "P5D", 5, "P1D");
 
-            var response = transaction.Send();
+            var response = transaction.Send().Result;
 
             if (response.IsSuccessfull())
             {
@@ -31,7 +31,7 @@ namespace SDKTest
                 Console.WriteLine("Performing instant subscription conversion ...");
 
                 var instantConversionTransaction = client.NewSubscriptionInstantConversionTransaction(response.subscriptionID);
-                var instantConversionResponse = instantConversionTransaction.Send();
+                var instantConversionResponse = instantConversionTransaction.Send().Result;
 
                 if (instantConversionResponse.IsSuccessfull())
                 {
@@ -41,7 +41,7 @@ namespace SDKTest
                     var cancelTransaction = client.NewSubscriptionCancelTransaction(response.subscriptionID);
                     cancelTransaction.SetCancelReason(1022); // Mandatory!!!
 
-                    var cancelResponse = cancelTransaction.Send();
+                    var cancelResponse = cancelTransaction.Send().Result;
 
                     if (cancelResponse.IsSuccessfull())
                     {

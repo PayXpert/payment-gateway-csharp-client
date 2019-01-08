@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace PayXpertLibrary
 {
@@ -30,7 +31,7 @@ namespace PayXpertLibrary
             this.baseURL = BaseURL;
         }
 
-        protected T SendRequestToServer<T>()
+        protected async Task<T> SendRequestToServer<T>()
         {
             var fullURL = Utils.Combine(baseURL, this.url.Url);
 
@@ -64,7 +65,10 @@ namespace PayXpertLibrary
                 }
             }
 
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponseAsync().Result;
+            // var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+
+            var asyncResponse = await httpWebRequest.GetResponseAsync();
+            var httpResponse = (HttpWebResponse)asyncResponse;
 
             using (Stream stream = httpResponse.GetResponseStream())
             {
