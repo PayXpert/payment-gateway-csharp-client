@@ -15,12 +15,12 @@ namespace PayXpertLibrary.Responses
         }
     }
 
-    public class ResponseObject : BaseResponseObject
+    public class BaseTransactionResponseObject : BaseResponseObject
     {
         public string transactionID { get; set; }
     }
 
-    public class SaleResponseObject : ResponseObject
+    public class SaleResponseObject : BaseTransactionResponseObject
     {
         public string statementDescriptor { get; set; }
         public PaymentMeanInfo paymentMeanInfo { get; set; }
@@ -36,7 +36,7 @@ namespace PayXpertLibrary.Responses
         public string subscriptionID { get; set; }
     }
 
-    public class QueryTransactionResponseObject : ResponseObject
+    public class QueryTransactionResponseObject : BaseTransactionResponseObject
     {
         public Transaction transaction { get; set; }
     }

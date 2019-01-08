@@ -30,11 +30,6 @@ namespace PayXpertLibrary
             this.baseURL = BaseURL;
         }
 
-        protected ResponseObject SendRequestToServer()
-        {
-            return SendRequestToServer<ResponseObject>();
-        }
-
         protected T SendRequestToServer<T>()
         {
             var fullURL = Utils.Combine(baseURL, this.url.Url);

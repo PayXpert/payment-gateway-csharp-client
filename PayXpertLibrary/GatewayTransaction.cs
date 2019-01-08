@@ -120,9 +120,9 @@ namespace PayXpertLibrary
             this.requestObject = request;
         }
 
-        public ResponseObject Send()
+        public BaseTransactionResponseObject Send()
         {
-            return SendRequestToServer();
+            return SendRequestToServer<BaseTransactionResponseObject>();
         }
 
         public void SetAmount(int amount)
@@ -140,9 +140,9 @@ namespace PayXpertLibrary
             this.requestObject = request;
         }
 
-        public ResponseObject Send()
+        public BaseTransactionResponseObject Send()
         {
-            return SendRequestToServer();
+            return SendRequestToServer<BaseTransactionResponseObject>();
         }
 
         public void SetInformationForRefund(int Amount, bool? IsSubscription)
