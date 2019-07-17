@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>$author$</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://github.com/PayXpert/payment-gateway-csharp-client/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/PayXpert/payment-gateway-csharp-client</projectUrl>
+    <iconUrl>https://www.payxpert.com/wp-content/uploads/2018/01/cropped-favicom-180x180.jpg</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
+    <copyright>Copyright 2019 (c) PAYXPERT LTD</copyright>
+  </metadata>
+</package>
